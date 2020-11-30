@@ -6,7 +6,7 @@ from random import randrange
 USERS_URL = "https://api.namefake.com/api.name-fake.com/english-united-states/"
 GENRE_COUNT = 30
 ANIME_COUNT = 20
-USER_COUNT = 20
+USER_COUNT = 21
 
 
 def generate_users_list(num):
@@ -30,8 +30,7 @@ def create_user_insertions(collection):
     ret = ""
     for user in collection:
         ret += """\
-INSERT INTO users (id, username, email, password)
-VALUES ({id}, '{username}', '{email}', '{password}');
+INSERT INTO users VALUES ({id}, '{username}', '{email}', '{password}');
 """.format(**user)
     return ret
 
@@ -47,8 +46,7 @@ def create_animelist_insertions(user_num, anime_num):
                 anime_id = randrange(1, anime_num + 1)
             anime_seen.append(anime_id)
             ret += """\
-INSERT INTO anime_list (user_id, anime_id, rating)
-VALUES ({user_id}, {anime_id}, {rating});
+INSERT INTO anime_list VALUES ({user_id}, {anime_id}, {rating});
 """.format(user_id=i, anime_id=anime_id, rating=randrange(1, 10 + 1))
     return ret
 
