@@ -504,7 +504,7 @@ SELECT title, COUNT(anime_id) AS anime_count from anime INNER JOIN anime_list US
 -- illustrate your relations using JOINs
 -- group by
 -- conditionals
-SELECT title, AVG(rating) AS anime_rating FROM anime INNER JOIN anime_list USING(anime_id) GROUP BY anime_id ORDER BY anime_rating HAVING anime_rating > 7;
+SELECT title, AVG(rating) AS anime_rating FROM anime INNER JOIN anime_list USING(anime_id) GROUP BY anime_id HAVING AVG(rating) > 6.5 ORDER BY 2;
 
 -- regex
 -- conditionals
